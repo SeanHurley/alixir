@@ -10,13 +10,12 @@ defmodule Alixir.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    post "/alexa", Alixir.AlexaController, :action
   end
 
   scope "/alixir", Alixir do
     pipe_through :browser # Use the default browser stack
-    get "/", TaskController, :index
-
-    resources "/tasks", TaskController
   end
 
   # Other scopes may use custom stacks.
